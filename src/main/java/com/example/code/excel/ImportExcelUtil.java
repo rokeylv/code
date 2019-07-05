@@ -119,12 +119,11 @@ public class ImportExcelUtil {
 		DecimalFormat df = new DecimalFormat("0"); // 格式化number String字符
 		SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd"); // 日期格式化
 		DecimalFormat df2 = new DecimalFormat("0"); // 格式化数字
-
 		switch (cell.getCellType()) {
-			case Cell.CELL_TYPE_STRING:
+			case STRING:
 				value = cell.getRichStringCellValue().getString();
 				break;
-			case Cell.CELL_TYPE_NUMERIC:
+			case NUMERIC:
 				if ("General".equals(cell.getCellStyle().getDataFormatString())) {
 					value = df.format(cell.getNumericCellValue());
 				} else if ("m/d/yy".equals(cell.getCellStyle().getDataFormatString())) {
@@ -133,10 +132,10 @@ public class ImportExcelUtil {
 					value = df2.format(cell.getNumericCellValue());
 				}
 				break;
-			case Cell.CELL_TYPE_BOOLEAN:
+			case BOOLEAN:
 				value = cell.getBooleanCellValue();
 				break;
-			case Cell.CELL_TYPE_BLANK:
+			case BLANK:
 				value = "";
 				break;
 			default:
